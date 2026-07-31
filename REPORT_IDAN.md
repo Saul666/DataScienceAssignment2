@@ -41,7 +41,7 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 * **Identification:** Missing values were primarily found in non-critical metadata or incomplete delivery timestamps.
 * **Action Taken:**
   * Rows missing key feature attributes required for aggregation (`order_purchase_timestamp`, `price`, `freight_value`) were dropped using `.dropna(subset=[...])`. Because missingness across these primary core transaction tables was $<0.1\%$, dropping these rows preserved data integrity without significant data loss.
-  * No synthetic imputation (e.g., mean/median filling) was applied to transaction amounts to avoid injecting false spend signals into clustering distance metrics.
+  * No imputation (e.g., mean/median filling) was applied to transaction amounts to avoid injecting false spend signals into clustering distance metrics.
 
 ---
 
