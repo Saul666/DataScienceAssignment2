@@ -13,14 +13,14 @@
 ### 1. Underlying Structure & Business Value
 
 * **Target Structure:** 
-  We are identifying naturally occurring customer behavioral personas based on purchasing dynamics (**Recency**, **Monetary Spend**, and **Basket Composition** metrics such as item count, average item price, and freight ratio). 
+  We are identifying naturally occurring customer behaviors in people based on purchasing dynamics (**Recency**, **Monetary Spend**, and **Basket Composition** metrics such as item count, average item price, and freight ratio). 
 
   *Note:* Because **~97% of Olist customers purchase only once**, traditional repeat-purchase frequency is dropped in favor of single-transaction basket behavior (e.g., *High-Value Single Item Buyers*, *Bulk Bargain Hunters*, *Recent Moderate Spenders*).
 
 * **Business Decisions Served:**
-  1. **Post-Purchase Engagement:** Tailor onboarding and product recommendation flows based on basket characteristics rather than generic repeat-buyer retention campaigns.
+  1. **Post-Purchase Engagement:** prepare product recommendations based on basket characteristics rather than generic repeat-buyer retention campaigns.
   2. **VIP & LTV Prioritization:** Automatically flag high-monetary, large-basket buyers upon their first purchase for high-priority support and dynamic loyalty incentives.
-  3. **Logistics & Freight Sensitivity:** Isolate segments that pay disproportionately high freight relative to product value (`freight_ratio`), helping Olist evaluate subsidies, regional fulfillment strategies, or seller bundling incentives.
+  3. **Logistics & Freight Sensitivity:** Isolate segments that pay high freight relative to product value (`freight_ratio`), helping Olist evaluate subsidies, regional fulfillment strategies, or seller bundling incentives.
 
 
 ### Feature Choices, Frequency Handling, and Missing Values
