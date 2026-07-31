@@ -83,7 +83,7 @@ Once features were scaled using `StandardScaler` (standardizing each feature to 
 * **Cluster 1 (Single-Order Lapsed Buyers):** recency ≈ 437 days, monetary ≈ $158, **`n_orders` = 1.00**
 * **Cluster 2 (Repeat Buyers):** recency ≈ 268 days, monetary ≈ $326, **`n_orders` = 2.11**
 
-> **💡 Key Insight:** Feature scaling enabled K-Means to isolate the rare ~3% repeat buyers into their own dedicated segment (**Cluster 2**), characterized by an average of 2.11 orders and double the mean spend. Without scaling, this crucial customer segment was completely hidden inside the other clusters.
+> * Feature scaling enabled K-Means to isolate the rare ~3% repeat buyers into their own dedicated segment (**Cluster 2**), characterized by an average of 2.11 orders and double the mean spend. Without scaling, this crucial customer segment was completely hidden inside the other clusters.
 
 6. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
 7. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
