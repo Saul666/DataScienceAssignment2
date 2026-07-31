@@ -16,9 +16,8 @@
 
 ### 2. Distance Metric Selection & Justification
 
-* **Chosen Metric:** **Euclidean Distance** *(applied after $\log(1 + x)$ transformation and `StandardScaler` normalization)*.
-
+* **Chosen Metric:** **Euclidean Distance** .
 * **Justification:**
-  1. **Magnitude Sensitivity:** Euclidean distance measures absolute distance in feature space, which is essential for capturing differences in scale (e.g., spending \$15 vs. \$1,500, or buying 1 item vs. 10 items). Cosine similarity evaluates direction/ratios rather than absolute magnitude, making it ill-suited for distinguishing high-spending buyers from low-spending buyers with similar feature proportions.
+  1. **Magnitude Sensitivity:** Euclidean distance measures absolute distance in feature space, which is essential for capturing differences in scale (e.g., spending \$15 vs. \$1,500, or buying 1 item vs. 10 items). Cosine similarity evaluates direction/ratios rather than absolute magnitude, making it less suited for distinguishing high-spending buyers from low-spending buyers with similar feature proportions.
   2. **Distribution Alignment:** E-commerce features like total spend (`monetary`) and item count (`basket_item_count`) are heavily right-skewed. Applying a $\log(1 + x)$ transformation compresses extreme long tails, and `StandardScaler` standardizes features to a mean of 0 and standard deviation of 1. This prevents high-variance dimensions from dominating the Euclidean distance calculation.
   3. **Algorithmic Compatibility:** Euclidean distance aligns directly with centroid-based clustering algorithms such as **K-Means**, which explicitly minimizes the Sum of Squared Euclidean Distances (Inertia).
