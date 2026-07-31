@@ -29,7 +29,7 @@
 For customer segmentation, three primary behavioral dimensions were constructed at the unique customer level (`customer_unique_id`):
 * **`recency_days`**: Days elapsed between the customer's last order purchase timestamp and the dataset benchmark date. Measures customer engagement timeliness.
 * **`monetary`**: Total spend per customer (sum of item prices and freight values). Captures overall customer revenue value.
-* **`n_orders` / `basket_item_count`**: Total number of orders or items purchased in a transaction session. Captures basket volume.
+* **`n_orders`**: Total number of orders or items purchased in a transaction session. Captures basket volume.
 
 #### 2. Strategy for Frequency
 * **The Problem:** Analysis revealed that **~97% of Olist customers bought only once**. In a standard RFM model, a feature where 97% of entries are identical provides near-zero variance and corrupts clustering algorithms.
