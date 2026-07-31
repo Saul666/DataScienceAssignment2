@@ -97,7 +97,58 @@ Once features were scaled using `StandardScaler` (standardizing each feature to 
 Paste the completed Structure Card from the notebook here.
 
 ```
-(Structure Card)
+# Structure Card
+
+## 1. Overview
+- Option and data: Olist Brazilian E-Commerce Dataset (Customer-level transactional data aggregated from orders, customers, and order items tables).
+- Features used and why (and what you did about frequency / missing values):
+  - `recency_days`: Days since last purchase (captures timeliness of customer engagement).
+  - `monetary`: Total cumulative customer spend (captures revenue value).
+  - `n_orders`: Total order count per customer (captures purchase repetition).
+  - Frequency / Missing Values Strategy: ~97% of Olist customers buy only once. Features were normalized using `StandardScaler` ($\mu=0, \sigma=1$) so the rare ~3–5% repeat buyers formed a distinct cluster rather than being erased by the scale of recency/monetary. NaNs in transactional attributes were $<0.1\%$ and removed via `.dropna()`.
+
+## 2. Method & validation
+- Approaches tried, and chosen k (Elbow vs Silhouette):
+  - Models tried: K-Means (Primary) and DBSCAN (Secondary, run on subsample due to RAM limits).
+  - Chosen $k=3$: Elbow method displayed inflection points at $k=3$ and $k=4$. Silhouette score peaked at $k=5$ ($0.4667$), but $k=3$ ($0.4183$) was selected for optimal business interpretability without creating redundant micro-segments.
+- Silhouette score, cluster sizes:
+  - Overall Silhouette Score ($k=3$): **0.4183**
+  - Cluster 0: **52,294** customers (54.8%)
+  - Cluster 1: **38,340** customers (40.2%)
+  - Cluster 2: **4,786** customers (5.0%)
+- Stability across seeds / subsamples:
+  - Tested via Adjusted Rand Index (ARI). Re-running with different seeds (10, 100, 2024) yielded $	ext{ARI} > 0.993$. Re-running on 80% random subsamples yielded $	ext{ARI} > 0.990$, proving near-perfect algorithmic stability.
+
+## 3. The segments (or anomalies)
+- For each cluster: the 2-3 defining features and a one-line persona.
+  - **Cluster 0:** Low recency (~177 days), moderate spend (~$160), order count = 1.00. 
+    *Persona:* "Engaged, single-order recent shoppers prime for re-targeting."
+  - **Cluster 1:** High recency (~437 days), moderate spend (~$159), order count = 1.00. 
+    *Persona:* "Cold, single-order lapsed shoppers at high risk of permanent churn."
+  - **Cluster 2:** Moderate recency (~268 days), high spend (~$326), high order count (mean 2.11). 
+    *Persona:* "High-value, repeat VIP customers driving retention value."
+- (Anomaly option) threshold chosen and how many candidates it flags:
+  - Isolation Forest (`contamination=0.02`) flagged **1,900+ (2%)** extreme outlier candidates (e.g., spending $1,000+ or high item counts).
+
+## 4. Real or artifact?
+- Evidence your structure is real, and the weakness of that evidence:
+  - **Evidence:** High stability ($	ext{ARI} > 0.99$) and clear behavioral separation of repeat buyers (Cluster 2 double the spend and double the orders).
+  - **Weakness:** K-Means assumes spherical clusters. DBSCAN showed that high-value buyers are sparse and spread across the tail, meaning K-Means artificially groups these outliers into a single cluster center.
+- Any cluster that is likely an algorithm artifact?
+  - **Clusters 0 & 1:** The sharp numerical boundary between Recent (~177 days) and Lapsed (~437 days) is a mathematical artifact of K-Means bisecting a continuous time distribution to minimize inertia.
+
+## 5. Business action
+- One concrete action per segment a team could take:
+  - **Cluster 0 (Recent Single-Order):** Trigger automated 30-day post-purchase cross-sell campaigns with targeted product recommendations.
+  - **Cluster 1 (Lapsed Single-Order):** Deploy aggressive win-back email discounts or satisfaction surveys to reactivate dormant users.
+  - **Cluster 2 (Repeat VIPs):** Enroll automatically in a VIP loyalty program offering free shipping and priority customer support.
+- (Anomaly) who reviews the candidates, and the cost of a false alarm:
+  - Reviewed by the **Risk/Fraud Ops team** or **VIP Account Management**. Cost of a false alarm is low (minor manual review time or sending a VIP offer to a non-VIP customer).
+
+<>:43: SyntaxWarning: invalid escape sequence '\m'
+<>:43: SyntaxWarning: invalid escape sequence '\m'
+/tmp/ipykernel_19096/1725175884.py:43: SyntaxWarning: invalid escape sequence '\m'
+  - Frequency / Missing Values Strategy: ~97% of Olist customers buy only once. Features were normalized using `StandardScaler` ($\mu=0, \sigma=1$) so the rare ~3–5% repeat buyers formed a distinct cluster rather than being erased by the scale of recency/monetary. NaNs in transactional attributes were $<0.1\%$ and removed via `.dropna()`.
 ```
 
 ---
