@@ -62,11 +62,34 @@ Answer each in 2-5 sentences.
 1. **No ground truth.** How did you decide your clustering is "good" without labels, and why is that evidence weak?
 2. **Choosing k.** What did Elbow say vs Silhouette? Where did they disagree, and which did you trust?
 3. **Scaling.** How did feature scaling change the clusters? Show a before/after for one decision.
-4. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
-5. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
-6. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
-7. **Action.** For each segment, one concrete action a marketing / ops team could take. If you can't name one, is the segment useful?
-8. **Cost of a false alarm.** (Anomaly option, or one line for clustering.) Why "candidates for investigation" and not "fraud"? What does a false alarm cost?
+  
+    ### Comparison: Unscaled vs. Scaled K-Means Clustering
+
+#### 1. WITHOUT Scaling (Dominated by Large Numbers)
+In the unscaled version, K-Means was completely blind to `n_orders`. Because `recency_days` reaches ~700 days and `monetary` reaches thousands of dollars—while `n_orders` remains small (mostly 1 or 2)—the algorithm split the data strictly along Recency and Monetary values:
+
+* **Cluster 0 (Recent Buyers):** ~177 days ago, ~$135 spend
+* **Cluster 1 (Old / Lapsed Buyers):** ~437 days ago, ~$130 spend
+* **Cluster 2 (Outlier High Spenders):** ~291 days ago, ~$1,051 spend
+
+* **Impact on `n_orders`:** **Zero.** `n_orders` averaged ~1.03 across all three clusters. The algorithm completely ignored repeat buying behavior because the feature's numerical scale was too small to affect Euclidean distance.
+
+---
+
+#### 2. WITH Scaling (Balanced Feature Weighting)
+Once features were scaled using `StandardScaler` (standardizing each feature to mean = 0, std = 1), every feature was given equal importance in distance calculations. This revealed distinct customer behaviors:
+
+* **Cluster 0 (Single-Order Recent Buyers):** recency ≈ 177 days, monetary ≈ $160, **`n_orders` = 1.00**
+* **Cluster 1 (Single-Order Lapsed Buyers):** recency ≈ 437 days, monetary ≈ $158, **`n_orders` = 1.00**
+* **Cluster 2 (Repeat Buyers):** recency ≈ 268 days, monetary ≈ $326, **`n_orders` = 2.11**
+
+> **💡 Key Insight:** Feature scaling enabled K-Means to isolate the rare ~3% repeat buyers into their own dedicated segment (**Cluster 2**), characterized by an average of 2.11 orders and double the mean spend. Without scaling, this crucial customer segment was completely hidden inside the other clusters.
+
+6. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
+7. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
+8. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
+9. **Action.** For each segment, one concrete action a marketing / ops team could take. If you can't name one, is the segment useful?
+10. **Cost of a false alarm.** (Anomaly option, or one line for clustering.) Why "candidates for investigation" and not "fraud"? What does a false alarm cost?
 
 ---
 
