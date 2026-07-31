@@ -23,8 +23,6 @@
   3. **Logistics & Freight Sensitivity:** Isolate segments that pay disproportionately high freight relative to product value (`freight_ratio`), helping Olist evaluate subsidies, regional fulfillment strategies, or seller bundling incentives.
 
 
-Feature choices (and what you did about frequency / missing values):
-
 ### Feature Choices, Frequency Handling, and Missing Values
 
 #### 1. Feature Choices & Rationale
