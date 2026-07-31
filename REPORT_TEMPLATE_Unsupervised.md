@@ -1,7 +1,7 @@
 # REPORT — Module 3 · Assignment 2 · Unsupervised Learning
 
-**Name:** ___  **ID:** ___  **Date:** ___
-**Chosen option:** ___ (A · Olist segmentation / B · Credit Card / C · Olist anomaly)
+**Name:** _Idan Gilad__  **ID:** _038506432__  **Date:** _30/07/2026__
+**Chosen option:** _A__ (A · Olist segmentation / B · Credit Card / C · Olist anomaly)
 
 > Keep this report in English. There is no ground truth here, so "I argued it is good
 > but the evidence is weak because ___" is a strong, honest answer.
