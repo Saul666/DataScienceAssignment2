@@ -145,10 +145,6 @@ Paste the completed Structure Card from the notebook here.
 - (Anomaly) who reviews the candidates, and the cost of a false alarm:
   - Reviewed by the **Risk/Fraud Ops team** or **VIP Account Management**. Cost of a false alarm is low (minor manual review time or sending a VIP offer to a non-VIP customer).
 
-<>:43: SyntaxWarning: invalid escape sequence '\m'
-<>:43: SyntaxWarning: invalid escape sequence '\m'
-/tmp/ipykernel_19096/1725175884.py:43: SyntaxWarning: invalid escape sequence '\m'
-  - Frequency / Missing Values Strategy: ~97% of Olist customers buy only once. Features were normalized using `StandardScaler` ($\mu=0, \sigma=1$) so the rare ~3–5% repeat buyers formed a distinct cluster rather than being erased by the scale of recency/monetary. NaNs in transactional attributes were $<0.1\%$ and removed via `.dropna()`.
 ```
 
 ---
