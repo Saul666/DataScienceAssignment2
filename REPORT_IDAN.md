@@ -86,9 +86,9 @@ Answer each in 2-5 sentences.
 
 
 
-3. **Choosing k.** What did Elbow say vs Silhouette? Where did they disagree, and which did you trust?
+3. ## **Choosing k.** What did Elbow say vs Silhouette? Where did they disagree, and which did you trust?
 
-4. Choosing $k$: Elbow vs. Silhouette:
+4. ## Choosing $k$: Elbow vs. Silhouette:
 
 * **Elbow Method:** Suggested **$k = 3$** (or $k = 4$), where the inertia reduction curve sharply flattened.
 * **Silhouette Score:** Suggested **$k = 5$**, reaching its highest peak at **0.4667** (vs. 0.4183 at $k=3$).
@@ -103,7 +103,7 @@ They disagreed on **$k = 3$ vs. $k = 5$**. Silhouette favored $k=5$ because spli
 #### Which We Trusted & Why
 We trusted **$k = 3$** (aligned with the Elbow method). While $k=5$ yielded a slightly higher mathematical score, the two extra clusters created redundant, non-actionable sub-segments of single-order shoppers, adding unnecessary operational complexity without business value.
 
-5. **Scaling.** How did feature scaling change the clusters? Show a before/after for one decision.
+5. ## **Scaling.** How did feature scaling change the clusters? Show a before/after for one decision.
   
     ### Comparison: Unscaled vs. Scaled K-Means Clustering
 
