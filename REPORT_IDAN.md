@@ -93,7 +93,30 @@ Once features were scaled using `StandardScaler` (standardizing each feature to 
 
 6. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
 7. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
-8. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
+
+#### 1. Segment Profiles
+| Cluster | Persona | Customer Share | Key Characteristics |
+| :---: | :--- | :---: | :--- |
+| **0** | **Single-Order Recent** | 53,403 | Recency ~177d, Spend ~$160, Orders = 1.00. Active single-purchase buyers. |
+| **1** | **Single-Order Lapsed** | 3005 | Recency ~437d, Spend ~$159, Orders = 1.00. Dormant buyers over a year out. |
+| **2** | **High-Value Repeat VIPs** | 39,688 | Recency ~268d, Spend ~$326, Orders = 2.11. Core multi-order, high-CLV buyers. |
+
+---
+
+#### 2. Key Separating Features
+1. **`n_orders` & `monetary`:** Isolate **Cluster 2** by separating repeat buyers (2.11 orders vs. 1.00) with double the spend ($326 vs. ~$160).
+2. **`recency_days`:** Splits single-order buyers into **Cluster 0** (Recent: ~177d) versus **Cluster 1** (Lapsed: ~437d).
+
+---
+
+#### 3. Business Viability
+**Yes, highly viable.** Segments align directly with standard e-commerce lifecycle strategies:
+* **Cluster 0 (Warm Leads):** Immediate post-purchase cross-selling & onboarding.
+* **Cluster 1 (Dormant):** Automated low-cost win-back campaigns.
+* **Cluster 2 (VIPs):** High-touch loyalty perks (free shipping, priority support) to protect CLV.
+
+* 
+9. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
 Yes. Clusters 0 and 1 are partially algorithmic artifacts, In K-Means: Every single customer must be assigned to one of the $k$ clusters (0, 1, or 2). The Artifact: recency_days is a continuous variable ranging smoothly from 1 to 700+ days without any natural gap or multi-modal break.
 how did i check :Comparison with a Non-Spherical Algorithm (DBSCAN) , Unlike K-Means, DBSCAN does not force spherical shapes. When run on the dataset, DBSCAN grouped the vast majority of single-order buyers into one single dense core, proving that Clusters 0 and 1 are not naturally isolated clusters
    
