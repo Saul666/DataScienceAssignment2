@@ -80,7 +80,7 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 * **Elbow Method:** Suggested **$k = 3$** (or $k = 4$), where the inertia reduction curve sharply flattened.
 * **Silhouette Score:** Suggested **$k = 5$**, reaching its highest peak at **0.4667** (vs. 0.4183 at $k=3$).
 * **Where They Disagreed & Why:** They disagreed on $k = 3$ vs. $k = 5$. Silhouette favored $k=5$ because isolating small, dense outlier sub-groups mathematically inflates average cluster isolation. The Elbow method measured global variance across all features without over-rewarding micro-clusters.
-* **Which We Trusted & Why:** We trusted **$k = 3$** (aligned with the Elbow method). While $k=5$ yielded a slightly higher mathematical score, the two extra clusters created redundant, non-actionable sub-segments of single-order shoppers, adding unnecessary operational complexity.
+* **Which We Trusted & Why:** I trusted **$k = 3$** (aligned with the Elbow method). While $k=5$ yielded a slightly higher mathematical score, the two extra clusters created redundant, non-actionable sub-segments of single-order shoppers, adding unnecessary operational complexity.
 
 ---
 
@@ -106,7 +106,7 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 ### 4. Stability
 **Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?**
 
-* **Survival:** Yes. The cluster assignments proved exceptionally stable across different random seeds (10, 100, 2024) and 80% data subsamples, maintaining an **Adjusted Rand Index (ARI) > 0.990**. Centroid positions remained consistent across iterations.
+* **Survival:** Yes. in the IPYNB notebook i created a new cell to test this ,  The cluster assignments proved exceptionally stable across different random seeds (10, 100, 2024) and 80% data subsamples, maintaining an **Adjusted Rand Index (ARI) > 0.990**. Centroid positions remained consistent across iterations.
 * **Trusting on Next Month's Data:** Yes, with caveat. The underlying macro structure (*Single-Order Recent*, *Single-Order Lapsed*, *Repeat VIP*) will remain stable because Olist’s structural purchase rate (~97% single purchases) changes slowly. However, individual customers will naturally drift from Cluster 0 to Cluster 1 as their `recency_days` increases if they are not re-engaged.
 
 ---
