@@ -91,8 +91,8 @@ Once features were scaled using `StandardScaler` (standardizing each feature to 
 
 > * Feature scaling enabled K-Means to isolate the rare ~3% repeat buyers into their own dedicated segment (**Cluster 2**), characterized by an average of 2.11 orders and double the mean spend. Without scaling, this crucial customer segment was completely hidden inside the other clusters.
 
-6. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
-7. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
+4. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
+5. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
 
 #### 1. Segment Profiles
 | Cluster | Persona | Customer Share | Key Characteristics |
@@ -116,12 +116,12 @@ Once features were scaled using `StandardScaler` (standardizing each feature to 
 * **Cluster 2 (VIPs):** High-touch loyalty perks (free shipping, priority support) to protect CLV.
 
 * 
-9. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
+6. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
 Yes. Clusters 0 and 1 are partially algorithmic artifacts, In K-Means: Every single customer must be assigned to one of the $k$ clusters (0, 1, or 2). The Artifact: recency_days is a continuous variable ranging smoothly from 1 to 700+ days without any natural gap or multi-modal break.
 how did i check :Comparison with a Non-Spherical Algorithm (DBSCAN) , Unlike K-Means, DBSCAN does not force spherical shapes. When run on the dataset, DBSCAN grouped the vast majority of single-order buyers into one single dense core, proving that Clusters 0 and 1 are not naturally isolated clusters
    
-15. **Action.** For each segment, one concrete action a marketing / ops team could take. If you can't name one, is the segment useful?
-16. ### 🎯 Business Actions & Segment Usefulness
+7. **Action.** For each segment, one concrete action a marketing / ops team could take. If you can't name one, is the segment useful?
+8. ### 🎯 Business Actions & Segment Usefulness
 
 #### Actions by Segment
 * **Cluster 0 (Recent Single-Order):** **30-Day Cross-Sell.** Trigger an automated post-purchase email sequence with product recommendations and a 10% coupon to drive order #2.
@@ -133,7 +133,20 @@ how did i check :Comparison with a Non-Spherical Algorithm (DBSCAN) , Unlike K-M
 #### Is an Unactionable Segment Useful?
 **No.** A cluster without a unique business action is **useless**. If two clusters receive the exact same marketing or operational treatment, they create unnecessary system complexity without driving incremental ROI and should be merged.
 
-17. **Cost of a false alarm.** (Anomaly option, or one line for clustering.) Why "candidates for investigation" and not "fraud"? What does a false alarm cost?
+9. **Cost of a false alarm.** (Anomaly option, or one line for clustering.) Why "candidates for investigation" and not "fraud"? What does a false alarm cost?
+10. ### 🚨 Anomaly Candidates & False Alarm Costs
+
+#### 1. Why "Candidates for Investigation" vs. "Fraud"?
+Unsupervised models flag **statistical outliers**, not intent. In e-commerce, extreme outliers are often **corporate buyers or high-value VIPs**, not criminals.
+
+#### 2. Cost of a False Alarm (False Positive)
+* **Wasted Ops Labor:** Analyst time spent manually inspecting harmless accounts.
+* **Customer Churn:** Offending or delaying legitimate top spenders (lost Lifetime Value).
+* **Opportunity Cost:** Diverting investigation resources away from real threats.
+
+---
+
+> **One-Line Summary for Clustering:** A false alarm misclassifies a customer persona—such as sending a churn win-back discount to an active VIP—wasting budget and damaging customer trust.
 
 ---
 
