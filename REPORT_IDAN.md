@@ -52,9 +52,9 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 | Item | Value |
 |---|---|
 | **Approaches tried** | • Primary: **K-Means** (Centroid-based segmentation)<br>• Secondary: **DBSCAN** (Density-based clustering on subsample)<br> |
-| **Chosen $k$ (Elbow vs Silhouette)** | **$k = 3$**. The Elbow method showed a sharp inflection at $k=3$ and $k=4$. While Silhouette score peaked at $k=5$ ($0.4667$), **$k=3$** ($0.4183$) was chosen . |
+| **Chosen $k$ (Elbow vs Silhouette)** | **$k = 3$**. The Elbow method showed an inflection at $k=3$ and $k=4$. and Silhouette score peaked at $k=5$ ($0.4667$),so i chose **$k=3$** ($0.4183$)n . |
 | **Silhouette score** | **0.4183** (for $k = 3$, calculated on a 10,000-row subsample) |
-| **Cluster sizes** | • **Cluster 0 (Single-Order Recent):** 52,294 customers (54.8%)<br>• **Cluster 1 (Single-Order Lapsed):** 38,340 customers (40.2%)<br>• **Cluster 2 (High-Value Repeat):** 4,786 customers (5.0%) |
+| **Cluster sizes** | • **Cluster 0 (Single-Order Recent):** 53,403 customers(55.57%) <br>• **Cluster 1 (Single-Order Lapsed):** 3005 customers (3.13%)<br>• **Cluster 2 (High-Value Repeat):** 39,688 customers (41.30%) |
 | **Stability across seeds / subsamples** | Highly stable via Adjusted Rand Index (ARI):<br>• **Across Seeds (10, 100, 2024):** $\text{ARI} > 0.993$<br>• **Across 80% Subsamples:** $\text{ARI} > 0.990$ |
 
 
