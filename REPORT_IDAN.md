@@ -88,7 +88,7 @@ Answer each in 2-5 sentences.
 
 3. **Choosing k.** What did Elbow say vs Silhouette? Where did they disagree, and which did you trust?
 
-4. ### 📈 Choosing $k$: Elbow vs. Silhouette
+4. Choosing $k$: Elbow vs. Silhouette:
 
 * **Elbow Method:** Suggested **$k = 3$** (or $k = 4$), where the inertia reduction curve sharply flattened.
 * **Silhouette Score:** Suggested **$k = 5$**, reaching its highest peak at **0.4667** (vs. 0.4183 at $k=3$).
