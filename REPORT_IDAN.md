@@ -94,8 +94,11 @@ Once features were scaled using `StandardScaler` (standardizing each feature to 
 6. **Stability.** Re-run with different seeds / on a subsample. Do the clusters survive? Would you trust them on next month's data?
 7. **What defines each cluster.** Name the 2-3 features that separate clusters. Do the personas make business sense?
 8. **Real or artifact.** Is any "cluster" just an artifact of the algorithm's assumptions (e.g. KMeans forcing spheres)? How did you check?
-9. **Action.** For each segment, one concrete action a marketing / ops team could take. If you can't name one, is the segment useful?
-10. **Cost of a false alarm.** (Anomaly option, or one line for clustering.) Why "candidates for investigation" and not "fraud"? What does a false alarm cost?
+Yes. Clusters 0 and 1 are partially algorithmic artifacts, In K-Means: Every single customer must be assigned to one of the $k$ clusters (0, 1, or 2). The Artifact: recency_days is a continuous variable ranging smoothly from 1 to 700+ days without any natural gap or multi-modal break.
+how did i check :Comparison with a Non-Spherical Algorithm (DBSCAN) , Unlike K-Means, DBSCAN does not force spherical shapes. When run on the dataset, DBSCAN grouped the vast majority of single-order buyers into one single dense core, proving that Clusters 0 and 1 are not naturally isolated clusters
+   
+15. **Action.** For each segment, one concrete action a marketing / ops team could take. If you can't name one, is the segment useful?
+16. **Cost of a false alarm.** (Anomaly option, or one line for clustering.) Why "candidates for investigation" and not "fraud"? What does a false alarm cost?
 
 ---
 
