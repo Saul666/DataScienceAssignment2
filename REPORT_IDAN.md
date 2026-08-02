@@ -58,8 +58,8 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 
 * **Why It Seemed "Good":**
   * **Internal Metrics:** Silhouette score of **0.4183** ($k=3$) with clear Elbow inflection points.
-  * **Algorithmic Stability:** Re-running across seeds and 80% subsamples yielded $\text{ARI} > 0.99$, proving high mathematical replicability.
-  * **Business Utility:** Clusters mapped onto distinct, actionable RFM cohorts (*Recent*, *Lapsed*, *VIP*).
+  * **Algorithmic Stability:** Re-running across seeds yielded $\text{ARI} > 0.99$, proving high mathematical replicability.
+ 
 
 * **Why This Evidence is Weak:**
   * **Metric Bias:** Silhouette and Inertia inherently favor spherical, compact clusters. A higher score simply proves K-Means is executing its algorithmic assumptions, not that the data naturally clusters this way.
