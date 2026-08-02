@@ -64,8 +64,7 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 * **Why This Evidence is Weak:**
   * **Metric Bias:** Silhouette and Inertia inherently favor spherical, compact clusters. A higher score simply proves K-Means is executing its algorithmic assumptions, not that the data naturally clusters this way.
   * **Stability $\neq$ Truth:** High ARI proves consistency, but an algorithm can consistently enforce an arbitrary mathematical boundary (e.g., bisecting a continuous time distribution) every time it runs.
-  * **Narrative Confirmation Bias:** Persona names are subjective—analysts can easily craft a compelling business narrative for arbitrary spatial splits.
-  * **Lack of Downstream Proof:** Without testing segments against actual downstream outcomes (e.g., measuring conversion or LTV lift in live A/B tests), "goodness" remains an unverified hypothesis.
+  * a $k=3$ and $k=4$ yield silhouette scores around ~0.45–0.48, signaling weak natural separation. this happens because of the ~97% single-buyer rate.
 
 ---
 
