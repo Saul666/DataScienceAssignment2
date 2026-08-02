@@ -32,11 +32,6 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 * **`monetary`**: Total spend per customer including item prices and freight values (captures revenue contribution).
 * **`n_orders`**: Total number of orders/items purchased (captures basket volume and repeat activity).
 
-#### Strategy for Frequency
-* **The Problem:** Analysis revealed that **~97% of Olist customers bought only once**. In a standard RFM model, a feature where 97% of entries are identical provides near-zero variance and degrades clustering distance metrics.
-* **The Solution:** Rather than relying solely on purchase repetition, frequency was handled by:
-  1. **Augmenting with Basket Metrics:** Expanding session-level features (`basket_item_count`, `avg_item_price`, `freight_ratio`) to evaluate transaction depth.
-  2. **Normalizing via `StandardScaler`:** Standardizing features ($\mu=0, \sigma=1$) ensured that the rare $\sim 3\%$ repeat buyers formed a distinct, meaningful cluster rather than being erased by the larger numerical scales of `recency_days` and `monetary`.
 
 #### Handling Missing Values (NaNs)
 * **Identification:** Missing values were primarily isolated to non-critical metadata or incomplete delivery timestamps.
