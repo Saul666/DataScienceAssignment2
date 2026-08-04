@@ -113,7 +113,7 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 | :---: | :--- | :---: | :--- |
 | **0** | **Single-Order Recent** | 53,403 (55.57%) | Recency ~177d, Spend ~$160, Orders = 1.00. Active single-purchase buyers. |
 | **1** | **Single-Order Lapsed** | 3005 (3.13%) | Recency ~437d, Spend ~$159, Orders = 1.00. Dormant buyers over a year out. |
-| **2** | **High-Value Repeat VIPs** | 39,688 (41.30%) | Recency ~268d, Spend ~$326, Orders = 2.11. Core multi-order, high-CLV buyers. |
+| **2** | **High-Value Repeat VIPs** | 39,688 (41.30%) | Recency ~268d, Spend ~$326, Orders = 2.11. Core multi-order, high-Customer Lifetime Value buyers. |
 
 #### Key Separating Features
 1. **`n_orders` & `monetary`:** Isolate **Cluster 2** by separating repeat buyers (2.11 orders vs. 1.00) with double the mean spend ($326 vs. ~$160).
@@ -123,7 +123,7 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 **Yes, highly viable.** Segments align directly with standard e-commerce lifecycle strategies:
 * **Cluster 0 (Warm Leads):** Immediate post-purchase cross-selling & onboarding.
 * **Cluster 1 (Dormant):** Automated low-cost win-back campaigns.
-* **Cluster 2 (VIPs):** High-touch loyalty perks (free shipping, priority support) to protect CLV.
+* **Cluster 2 (VIPs):** High-touch loyalty perks (free shipping, priority support) to protect Customer Lifetime Value.
 
 ---
 
