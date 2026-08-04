@@ -5,9 +5,6 @@
 **Date:** 30/07/2026  
 **Chosen option:** A (Olist Customer Segmentation)
 
-> Keep this report in English. There is no ground truth here, so "I argued it is good but the evidence is weak because ___" is a strong, honest answer.
-
----
 
 ## 1. Framing
 
