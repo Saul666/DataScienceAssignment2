@@ -8,7 +8,7 @@
 
 ## 1. Framing
 
-### 1. Underlying Structure & Business Value
+### 1. Underlying Structure & Business Value 
 
 * **Target Structure:**  
   We are identifying naturally occurring purchasing behaviors using core transaction dynamics (**Recency**, **Monetary Spend**, and **Basket Composition** metrics such as item count, average item price, and freight ratio).  
