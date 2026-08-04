@@ -176,9 +176,9 @@ For customer segmentation, three primary behavioral dimensions were constructed 
   - Chosen $k=3$: Elbow method displayed inflection points at $k=3$ and $k=4$. Silhouette score peaked at $k=5$ ($0.4667$), but $k=3$ ($0.4183$) was selected for optimal business interpretability without creating redundant micro-segments.
 - Silhouette score, cluster sizes:
   - Overall Silhouette Score ($k=3$): **0.4183**
-  - Cluster 0: **52,294** customers (54.8%)
-  - Cluster 1: **38,340** customers (40.2%)
-  - Cluster 2: **4,786** customers (5.0%)
+  - Cluster 0: **53,403** customers 
+  - Cluster 1: **3,005** customers 
+  - Cluster 2: **39,688** customers 
 - Stability across seeds / subsamples:
   - Tested via Adjusted Rand Index (ARI). Re-running with different seeds (10, 100, 2024) yielded $	ext{ARI} > 0.993$. Re-running on 80% random subsamples yielded $	ext{ARI} > 0.990$, proving near-perfect algorithmic stability.
 
@@ -186,10 +186,10 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 - For each cluster: the 2-3 defining features and a one-line persona.
   - **Cluster 0:** Low recency (~177 days), moderate spend (~$160), order count = 1.00. 
     *Persona:* "Engaged, single-order recent shoppers prime for re-targeting."
-  - **Cluster 1:** High recency (~437 days), moderate spend (~$159), order count = 1.00. 
-    *Persona:* "Cold, single-order lapsed shoppers at high risk of permanent churn."
-  - **Cluster 2:** Moderate recency (~268 days), high spend (~$326), high order count (mean 2.11). 
-    *Persona:* "High-value, repeat VIP customers driving retention value."
+  - **Cluster 1:** moderate recency (~437 days), moderate spend (~$159), order count = 1.00. 
+    *Persona:* "Cold,  repeat VIP customers driving retention value."
+  - **Cluster 2:** high recency (~268 days), high spend (~$326), high order count (mean 2.11). 
+    *Persona:* "High-value, repeat VIP customers driving retention value.  single-order lapsed shoppers at high risk of permanent churn."
 - (Anomaly option) threshold chosen and how many candidates it flags:
   - Isolation Forest (`contamination=0.02`) flagged **1,900+ (2%)** extreme outlier candidates (e.g., spending $1,000+ or high item counts).
 
