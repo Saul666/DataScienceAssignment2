@@ -212,11 +212,10 @@ For customer segmentation, three primary behavioral dimensions were constructed 
 ## 5. Reflection
 What surprised you? Would these segments hold on new data? How would this feed your mid-term project?
 
-### 💡 Reflection & Pair Trading Integration
+### Reflection & Pair Trading Integration
 
 * **What Surprised Me:** How aggressively K-Means forces hard boundaries on continuous data distributions, and how high stability metrics ($\text{ARI} > 0.99$) can create false confidence in arbitrary mathematical cuts.
 * **Holding on New Data:** Macro-structures will hold due to underlying market dynamics, but individual assets will drift across boundaries over time—requiring periodic re-clustering on rolling time windows.
 * **Feed into Pair Trading (Pearson Matrix + Clustering):**  
-  Clustering serves as a **pre-filtering dimensionality reduction step** before computing correlations:
-  1. **Cluster First:** Group stocks into cohesive clusters based on standardized return profiles or PCA dimensions (eliminating spurious cross-sector pairs).
-  2. **Pearson Matrix Within Clusters:** Calculate Pearson correlation matrices *only within each cluster* to identify tight, highly co-integrated stock pairs for statistical arbitrage without searching an inefficient $N \times N$ full-market space.
+  Clustering serves as a **grouping step** after computing correlations:
+ 
